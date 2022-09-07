@@ -9,7 +9,7 @@
     </v-toolbar>
     <v-data-table :headers="headers" :items="users">
       <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
+        <td>{{ props.item.id }}</td>
         <td>{{ props.item.email }}</td>
         <td>{{ props.item.full_name }}</td>
         <td><v-icon v-if="props.item.is_active">checkmark</v-icon></td>
@@ -28,14 +28,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { Store } from 'vuex';
-import { IUserProfile } from '@/interfaces';
+import { Component, Vue } from 'vue-facing-decorator';
 import { readAdminUsers } from '@/store/admin/getters';
 import { dispatchGetUsers } from '@/store/admin/actions';
 
 @Component
 export default class AdminUsers extends Vue {
+[x: string]: any;
   public headers = [
     {
       text: 'Name',

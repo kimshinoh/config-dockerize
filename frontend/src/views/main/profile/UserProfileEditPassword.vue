@@ -8,8 +8,8 @@
         <template>
           <div class="my-3">
             <div class="subheading secondary--text text--lighten-2">User</div>
-            <div class="title primary--text text--darken-2" v-if="userProfile.full_name">{{userProfile.full_name}}</div>
-            <div class="title primary--text text--darken-2" v-else>{{userProfile.email}}</div>
+            <div class="title primary--text text--darken-2" v-if="userProfile?.full_name">{{userProfile?.full_name}}</div>
+            <div class="title primary--text text--darken-2" v-else>{{userProfile?.email}}</div>
           </div>
           <v-form ref="form">
             <v-text-field 
@@ -48,14 +48,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { Store } from 'vuex';
+import { Component, Vue } from 'vue-facing-decorator';
 import { IUserProfileUpdate } from '@/interfaces';
 import { readUserProfile } from '@/store/main/getters';
 import { dispatchUpdateUserProfile } from '@/store/main/actions';
 
 @Component
 export default class UserProfileEdit extends Vue {
+[x: string]: any;
   public valid = true;
   public password1 = '';
   public password2 = '';

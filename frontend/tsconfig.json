@@ -21,6 +21,7 @@
         "src/*"
       ]
     },
+    "allowJs": true,
     "lib": [
       "esnext",
       "dom",

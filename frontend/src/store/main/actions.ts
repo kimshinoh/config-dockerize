@@ -100,7 +100,7 @@ export const actions = {
         commitAddNotification(context, { content: 'Logged out', color: 'success' });
     },
     actionRouteLogOut(context: MainContext) {
-        if (router.currentRoute.path !== '/login') {
+        if (router.currentRoute.value.path !== '/login') {
             router.push('/login');
         }
     },
@@ -110,7 +110,7 @@ export const actions = {
         }
     },
     actionRouteLoggedIn(context: MainContext) {
-        if (router.currentRoute.path === '/login' || router.currentRoute.path === '/') {
+        if (router.currentRoute.value.path === '/login' || router.currentRoute.value.path === '/') {
             router.push('/main');
         }
     },

@@ -99,13 +99,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-facing-decorator';
 import { IUserProfile, IUserProfileUpdate } from '@/interfaces';
 import { dispatchGetUsers, dispatchUpdateUser } from '@/store/admin/actions';
 import { readAdminOneUser } from '@/store/admin/getters';
 
 @Component
 export default class EditUser extends Vue {
+[x: string]: any;
   public valid = true;
   public fullName: string = '';
   public email: string = '';
@@ -157,7 +158,7 @@ export default class EditUser extends Vue {
   }
 
   get user() {
-    return readAdminOneUser(this.$store)(+this.$router.currentRoute.params.id);
+    return readAdminOneUser(this.$store)(+this.$router.currentRoute.value.params.id);
   }
 }
 </script>

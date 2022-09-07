@@ -6,11 +6,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
+import { Component, Vue, Prop, Emit } from 'vue-facing-decorator';
 
 @Component
 export default class UploadButton extends Vue {
-  @Prop(String) public color: string | undefined;
+  public color: string | undefined;
   @Prop({default: false}) public multiple!: boolean;
   @Emit()
   public files(e): FileList {
