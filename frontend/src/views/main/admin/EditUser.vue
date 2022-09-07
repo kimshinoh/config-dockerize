@@ -158,7 +158,7 @@ export default class EditUser extends Vue {
   }
 
   get user() {
-    return readAdminOneUser(this.$store)(+this.$router.currentRoute.params.id);
+    return readAdminOneUser(this.$store)(+this.$router.currentRoute.value.params.id);
   }
 }
 </script>

@@ -1,5 +1,5 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
-FROM node:14-alpine3.16 as build-stage
+FROM node:14.19.1 as build-stage
 
 WORKDIR /app
 
@@ -24,5 +24,5 @@ FROM nginx:1.15
 
 COPY --from=build-stage /app/dist/ /usr/share/nginx/html
 
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./nginx-backend-not-found.conf /etc/nginx/extra-conf.d/backend-not-found.conf
+COPY --from=build-stage /app/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-stage /app/nginx-backend-not-found.conf /etc/nginx/extra-conf.d/backend-not-found.conf
