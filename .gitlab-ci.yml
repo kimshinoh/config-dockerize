@@ -1,0 +1,71 @@
+image: tiangolo/docker-with-compose
+
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+  GIT_SUBMODULE_STRATEGY: recursive
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - pip install docker-auto-labels
+
+stages:
+  - build
+  - deploy
+
+build-stag:
+  stage: build
+  script:
+    - TAG=stag sh ./scripts/build-push.sh
+  only:
+    - master
+  tags:
+    - build
+    
+build-prod:
+  stage: build
+  script:
+    - TAG=prod sh ./scripts/build-push.sh
+  only:
+    - production
+  tags:
+    - build
+
+deploy-stag:
+  stage: deploy
+  script: 
+    - >
+      APP_NAME=${APP_NAME?APP_NAME not set}
+      DOMAIN=${DOMAIN?DOMAIN not set}
+      TLD=${TLD?TLD not set}
+      TRAEFIK_TAG=${APP_NAME?APP_NAME not set}.stag.${DOMAIN?DOMAIN not set}.${TLD?TLD not set}
+      STACK_NAME=${APP_NAME?APP_NAME not set}-stag-${DOMAIN?DOMAIN not set}-${TLD?TLD not set}
+      TAG=stag
+      sh ./scripts/deploy.sh
+  environment:
+    name: staging
+    url: https://${APP_NAME?APP_NAME not set}.stag.${DOMAIN?DOMAIN not set}.${TLD?TLD not set}
+  only:
+    - master
+  tags:
+    - swarm
+    - stag
+
+deploy-prod:
+  stage: deploy
+  script:
+    - >
+      APP_NAME=${APP_NAME?APP_NAME not set}
+      DOMAIN=${DOMAIN?DOMAIN not set}
+      TLD=${TLD?TLD not set}
+      TRAEFIK_TAG=${APP_NAME?APP_NAME not set}.${DOMAIN?DOMAIN not set}.${TLD?TLD not set}
+      STACK_NAME=${APP_NAME?APP_NAME not set}-${DOMAIN?DOMAIN not set}-${TLD?TLD not set}
+      TAG=prod
+      sh ./scripts/deploy.sh
+  environment:
+    name: production
+    url: https://${APP_NAME?APP_NAME not set}.${DOMAIN?DOMAIN not set}.${TLD?TLD not set}
+  only:
+    - production
+  tags:
+    - swarm
+    - prod

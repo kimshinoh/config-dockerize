@@ -1,0 +1,89 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@formatjs/intl": "^1.18.5",
+    "ajv": "^8.11.0",
+    "axios": "^0.21.4",
+    "bufferutil": "^4.0.6",
+    "cache-loader": "^4.1.0",
+    "canvas": "^2.10.0",
+    "core-js": "^3.25.0",
+    "node-latest-version": "^1.0.16",
+    "node-notifier": "^8.0.2",
+    "npm": "^8.15.0",
+    "register-service-worker": "^1.0.0",
+    "typesafe-vuex": "^3.2.2",
+    "utf-8-validate": "^5.0.9",
+    "vee-validate": "^2.1.7",
+    "vite": "^2.9.15",
+    "vite-plugin-vuetify": "^1.0.0-alpha.16",
+    "vue": "^3.2.38",
+    "vue-class-component": "^8.0.0-rc.1",
+    "vue-i18n": "^9.2.2",
+    "vue-property-decorator": "^10.0.0-rc.3",
+    "vue-router": "^3.5.1",
+    "vuetify": "^3.0.0-beta.10",
+    "vuex": "^3.6.2",
+    "webpack": "^5.74.0",
+    "webpack-plugin-vuetify": "^2.0.0-alpha.13"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.2",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-pwa": "^5.0.8",
+    "@vue/cli-plugin-typescript": "^5.0.8",
+    "@vue/cli-plugin-unit-jest": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "@vue/test-utils": "^2.0.2",
+    "@vue/vue3-jest": "^27.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.5",
+    "typescript": "^4.5.5",
+    "vue-cli-plugin-vuetify": "^2.5.5",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue",
+      "ts",
+      "tsx"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost/"
+  }
+}

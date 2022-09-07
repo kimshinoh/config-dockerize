@@ -1,0 +1,3 @@
+[submodule "backend/app/app/m3python"]
+	path = backend/app/app/m3python
+	url = ../m3python.git
