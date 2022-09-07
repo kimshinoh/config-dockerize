@@ -30,15 +30,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { Store } from 'vuex';
-import { IUserProfileUpdate } from '@/interfaces';
+import { Component, Vue } from 'vue-facing-decorator';
+import { useRoute } from 'vue-router'
 import { appName } from '@/env';
 import { commitAddNotification } from '@/store/main/mutations';
 import { dispatchResetPassword } from '@/store/main/actions';
 
 @Component
 export default class UserProfileEdit extends Vue {
+[x: string]: any;
   public appName = appName;
   public valid = true;
   public password1 = '';
@@ -59,7 +59,7 @@ export default class UserProfileEdit extends Vue {
   }
 
   public checkToken() {
-    const token = (this.$router.currentRoute.query.token as string);
+    const token = useRoute().params.token as string;
     if (!token) {
       commitAddNotification(this.$store, {
         content: 'No token provided in the URL, start a new password recovery',

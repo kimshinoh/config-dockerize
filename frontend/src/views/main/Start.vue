@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { store } from '@/store';
+import { Component, Vue } from 'vue-facing-decorator';
+import  store  from '@/store'; 
 import { dispatchCheckLoggedIn } from '@/store/main/actions';
 import { readIsLoggedIn } from '@/store/main/getters';
 

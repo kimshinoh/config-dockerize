@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { store } from '@/store';
+import { Component, Vue } from 'vue-facing-decorator';
+import  store  from '@/store';
 import { readHasAdminAccess } from '@/store/main/getters';
 
 const routeGuardAdmin = async (to, from, next) => {

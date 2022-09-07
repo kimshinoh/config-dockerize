@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-facing-decorator';
 import {
   IUserProfile,
   IUserProfileUpdate,
@@ -47,6 +47,7 @@ import { dispatchGetUsers, dispatchCreateUser } from '@/store/admin/actions';
 
 @Component
 export default class CreateUser extends Vue {
+[x: string]: any;
   public valid = false;
   public fullName: string = '';
   public email: string = '';

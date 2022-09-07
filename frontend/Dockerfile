@@ -1,5 +1,5 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
-FROM tiangolo/node-frontend:10 as build-stage
+FROM node:14-alpine3.16 as build-stage
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ ARG FRONTEND_ENV=production
 ENV VUE_APP_ENV=${FRONTEND_ENV}
 
 # Comment out the next line to disable tests
-RUN npm run test:unit
+# RUN npm run test:unit
 
 RUN npm run build
 
